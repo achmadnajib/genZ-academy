@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GenZ Upgrade - Aplikasi Pembelajaran</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #6a0dad, #8a2be2);
+        color: white;
+        min-height: 100vh;
+      }
+      body.centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .hidden {
+        display: none;
+      }
+
+      /* WELCOME */
+      .welcome {
+        text-align: center;
+        max-width: 600px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      .welcome h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        color: white;
+      }
+      .welcome p {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+      }
+      .btn-large {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        background: #ffa500;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .btn-large:hover {
+        background: #e69500;
+      }
+
+      /* FORM LOGIN */
+      .form {
+        max-width: 400px;
+        margin: 100px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        color: #333;
+      }
+      .form h2 {
+        text-align: center;
+        color: #6a0dad;
+      }
+      .form label {
+        font-size: 0.85em;
+        font-weight: 500;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0 14px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 0.9em;
+      }
+      .btn {
+        background: #ffa500;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 0.9em;
+        transition: background 0.3s;
+      }
+      .btn.full {
+        width: 100%;
+      }
+      .btn:hover {
+        background: #e69500;
+      }
+      .back-btn {
+        background: #6a0dad;
+        margin-top: 8px;
+      }
+      .back-btn:hover {
+        background: #5a0b9a;
+      }
+
+      .small-text {
+        font-size: 0.8em;
+        color: #555;
+      }
+
+      /* NAVBAR SISWA */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(90deg, #6a0dad, #8a2be2);
+        color: white;
+        padding: 12px 20px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .navbar .logo {
+        font-weight: 700;
+        font-size: 1.4em;
+      }
+      .navbar .menu {
+        display: flex;
+        gap: 16px;
+        font-size: 0.9em;
+      }
+      .navbar .menu a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .navbar .right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.8em;
+      }
+      .chip {
+        background: #ffa500;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8em;
+      }
+      .badge-icon {
+        cursor: pointer;
+        font-size: 1.3em;
+      }
+
+      .section {
+        margin-top: 70px;
+        padding: 20px 0;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px 40px;
+      }
+
+      .slider {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding: 16px 0;
+        scroll-behavior: smooth;
+      }
+      .slider::-webkit-scrollbar {
+        display: none;
+      }
+
+      .card {
+        background: white;
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        min-width: 260px;
+        flex-shrink: 0;
+        color: #333;
+      }
+      .card.large {
+        min-width: 360px;
+      }
+      .card h3 {
+        margin-top: 0;
+      }
+
+      .btn-secondary {
+        background: #6a0dad;
+        color: white;
+        border: none;
+        padding: 7px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 0.8em;
+        transition: background 0.3s;
+      }
+      .btn-secondary:hover {
+        background: #5a0b9a;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+      }
+      .tab {
+        padding: 7px 12px;
+        background: #e9ecef;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 0.85em;
+      }
+      .tab.active {
+        background: #6a0dad;
+        color: white;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: #e9ecef;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 6px 0 4px;
+      }
+      .progress-fill {
+        height: 100%;
+        background: #ffa500;
+        width: 0%;
+        transition: width 0.3s;
+      }
+
+      .chart {
+        width: 100%;
+        height: 180px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        padding: 10px;
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        color: #6a0dad;
+        overflow-x: auto;
+        font-size: 0.75em;
+      }
+      .chart-bar {
+        flex: 0 0 22px;
+        background: #6a0dad;
+        border-radius: 4px 4px 0 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        color: #fff;
+      }
+
+      /* DETAIL PAGE SEDERHANA */
+      .overlay-card {
+        max-width: 800px;
+        margin: 80px auto 40px;
+        background: white;
+        color: #333;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      /* DASHBOARD PENGAJAR */
+      .sidebar {
+        width: 230px;
+        background: #6a0dad;
+        color: white;
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding: 18px;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.12);
+        font-size: 0.9em;
+      }
+      .sidebar .logo {
+        font-weight: 700;
+        font-size: 1.3em;
+        margin-bottom: 24px;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar li {
+        margin: 12px 0;
+      }
+      .sidebar a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .content {
+        margin-left: 230px;
+        padding: 20px;
+        color: #333;
+      }
+      .panel {
+        display: none;
+      }
+      .panel.active {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .navbar .menu {
+          display: none;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          display: none;
+        }
+        .content {
+          margin-left: 0;
+        }
+        .card.large {
+          min-width: 260px;
+        }
+      }
+
+      /* MODAL BADGE */
+      .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 16px;
+        max-width: 400px;
+        width: 90%;
+        color: #333;
+      }
+      .modal-content h3 {
+        margin-top: 0;
+      }
+      .modal-close {
+        margin-top: 10px;
+        text-align: right;
+      }
+      .modal-close button {
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: none;
+        background: #6a0dad;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="centered">
+    <!-- PILIH PERAN -->
+    <div id="welcome" class="welcome">
+      <h1>GenZ Upgrade</h1>
+      <p>Pilih peran untuk masuk ke sistem</p>
+      <button class="btn-large" onclick="showLogin('siswa')">Siswa</button>
+      <button class="btn-large" onclick="showLogin('pengajar')">
+        Pengajar
+      </button>
+    </div>
+
+    <!-- LOGIN SISWA -->
+    <div id="login-siswa" class="hidden">
+      <div class="form">
+        <h2>Masuk sebagai Siswa</h2>
+        <label
+          >Username (harus diingat, kalau lupa tidak bisa masuk lagi)</label
+        >
+        <input
+          type="text"
+          id="siswa-username"
+          placeholder="Contoh: gilang07"
+          oninput="onSiswaUsernameChange()"
+        />
+        <div id="siswa-extra-fields">
+          <label>Nama Lengkap</label>
+          <input type="text" id="siswa-nama" placeholder="Nama lengkap" />
+          <label>No WhatsApp Aktif</label>
+          <input type="tel" id="siswa-wa" placeholder="Contoh: 628xxxxxx" />
+        </div>
+        <label>Password</label>
+        <input
+          type="password"
+          id="siswa-password"
+          placeholder="Minimal 4 karakter"
+        />
+        <button class="btn full" onclick="loginSiswa()">Masuk / Daftar</button>
+        <button class="btn full back-btn" onclick="backToWelcome()">
+          Kembali
+        </button>
+        <p
+          id="siswa-login-note"
+          class="small-text"
+          style="text-align: center; margin-top: 8px"
+        >
+          Jika username sudah pernah dipakai, kamu cukup isi username dan
+          password yang sama.
+        </p>
+      </div>
+    </div>
+
+    <!-- LOGIN PENGAJAR -->
+    <div id="login-pengajar" class="hidden">
+      <div class="form">
+        <h2>Masuk sebagai Pengajar</h2>
+        <label>Username</label>
+        <input
+          type="text"
+          id="pengajar-username"
+          placeholder="Username pengajar"
+        />
+        <label>Password</label>
+        <input type="password" id="pengajar-password" placeholder="Password" />
+        <button class="btn full" onclick="loginPengajar()">Masuk</button>
+        <button class="btn full back-btn" onclick="backToWelcome()">
+          Kembali
+        </button>
+        <p class="small-text" style="text-align: center; margin-top: 8px">
+          Admin utama: username <b>ach najib supri kasturi</b>, password
+          <b>achnajib2005</b>.
+        </p>
+      </div>
+    </div>
+
+    <!-- DASHBOARD SISWA -->
+    <div id="dashboard-siswa" class="hidden">
+      <div class="navbar">
+        <div class="logo">GenZ Upgrade</div>
+        <div class="menu">
+          <a href="javascript:void(0)" onclick="showSiswaSection('home')"
+            >Dashboard</a
+          >
+          <a href="javascript:void(0)" onclick="showSiswaSection('materi')"
+            >Materi</a
+          >
+          <a href="javascript:void(0)" onclick="showSiswaSection('tantangan')"
+            >Tantangan</a
+          >
+          <a href="javascript:void(0)" onclick="showSiswaSection('produk')"
+            >Produk</a
+          >
+        </div>
+        <div class="right">
+          <span id="halo-siswa">Halo, Siswa</span>
+          <span class="chip" id="level-poin">Level 1 • 0 poin</span>
+          <span class="badge-icon" onclick="showModal()">🔰</span>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- HALAMAN UTAMA SISWA -->
+        <div id="siswa-home" class="section">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h2>Materi Utama Minggu Ini</h2>
+            <button class="btn-secondary" onclick="showSiswaSection('materi')">
+              Lihat Semua Materi
+            </button>
+          </div>
+          <div class="slider" id="slider-materi-penting"></div>
+
+          <div class="section">
+            <div class="card">
+              <h3>Panduan Menggunakan Platform</h3>
+              <ul>
+                <li>
+                  Pilih materi → baca sampai selesai → tekan tombol selesai →
+                  dapat poin
+                </li>
+                <li>
+                  Pilih 1 tantangan → selesaikan semua langkah → baru dapat poin
+                </li>
+                <li>Order produk → tercatat di dashboard pengajar</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="section">
+            <div
+              style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px"
+            >
+              <div class="card">
+                <h3>Tantangan Aktifmu</h3>
+                <div id="tantangan-aktif-box"></div>
+              </div>
+              <div class="card">
+                <h3>Perkembangan Poin Kamu</h3>
+                <div id="chart-poin" class="chart"></div>
+                <p class="small-text" style="margin-top: 6px">
+                  Grafik ini bergerak setiap kali kamu menyelesaikan materi atau
+                  tantangan.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HALAMAN MATERI LIST -->
+        <div id="siswa-materi" class="section hidden">
+          <h2>Semua Materi</h2>
+          <div class="tabs" id="tabs-materi"></div>
+          <div class="grid" id="materi-list"></div>
+        </div>
+
+        <!-- HALAMAN DETAIL MATERI -->
+        <div id="materi-detail-page" class="hidden">
+          <div class="overlay-card">
+            <button class="btn back-btn" onclick="closeMateriDetail()">
+              ← Kembali
+            </button>
+            <h2 id="materi-detail-title" style="margin-top: 16px"></h2>
+            <p id="materi-detail-kategori" class="small-text"></p>
+            <div
+              id="materi-detail-content"
+              style="margin: 10px 0 18px; font-size: 0.95em; line-height: 1.6"
+            ></div>
+            <button
+              id="materi-detail-done-btn"
+              class="btn"
+              onclick="finishMateriFromDetail()"
+            >
+              Tandai Selesai & Tambah Poin
+            </button>
+            <p
+              id="materi-detail-status"
+              class="small-text"
+              style="margin-top: 8px"
+            ></p>
+          </div>
+        </div>
+
+        <!-- HALAMAN TANTANGAN -->
+        <div id="siswa-tantangan" class="section hidden">
+          <h2>Tantangan</h2>
+          <div class="card" id="tantangan-aktif-box-page"></div>
+
+          <h3 style="margin-top: 22px">
+            Tantangan Lain (pilih jika belum punya tantangan aktif)
+          </h3>
+          <div class="grid" id="tantangan-list"></div>
+        </div>
+
+        <!-- HALAMAN DETAIL TANTANGAN -->
+        <div id="tantangan-detail-page" class="hidden">
+          <div class="overlay-card">
+            <button class="btn back-btn" onclick="closeTantanganDetail()">
+              ← Kembali
+            </button>
+            <h2 id="tantangan-detail-title" style="margin-top: 16px"></h2>
+            <p id="tantangan-detail-info" class="small-text"></p>
+            <h4>Langkah-langkah:</h4>
+            <div id="tantangan-detail-steps" style="margin-bottom: 16px"></div>
+            <button
+              id="tantangan-detail-finish-btn"
+              class="btn"
+              onclick="finishTantangan()"
+            >
+              Selesaikan Tantangan & Dapat Poin
+            </button>
+            <p
+              id="tantangan-detail-status"
+              class="small-text"
+              style="margin-top: 8px"
+            ></p>
+          </div>
+        </div>
+
+        <!-- HALAMAN PRODUK -->
+        <div id="siswa-produk" class="section hidden">
+          <h2>Produk</h2>
+          <p class="small-text">
+            Produk hanya muncul jika pengajar menambahkannya.
+          </p>
+          <div class="grid" id="produk-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD PENGAJAR -->
+    <div id="dashboard-pengajar" class="hidden">
+      <div class="sidebar">
+        <div class="logo">GenZ Upgrade</div>
+        <ul>
+          <li>
+            <a
+              href="javascript:void(0)"
+              onclick="showPengajarPanel('p-dashboard')"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="showPengajarPanel('p-materi')"
+              >Materi</a
+            >
+          </li>
+          <li>
+            <a
+              href="javascript:void(0)"
+              onclick="showPengajarPanel('p-tantangan')"
+              >Tantangan</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="showPengajarPanel('p-produk')"
+              >Produk</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="showPengajarPanel('p-order')"
+              >Order</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0)" onclick="showPengajarPanel('p-siswa')"
+              >Siswa</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <!-- PANEL DASHBOARD -->
+        <div id="p-dashboard" class="panel active">
+          <h2>Dashboard Pengajar</h2>
+          <p class="small-text">
+            Data ini diambil dari aktivitas siswa & pengaturan yang dibuat
+            pengajar.
+          </p>
+          <div class="grid" id="pengajar-summary"></div>
+
+          <!-- Hanya admin yang boleh lihat -->
+          <div
+            id="admin-add-teacher"
+            class="card"
+            style="margin-top: 20px; display: none"
+          >
+            <h3>Tambah Pengajar Baru (Hanya Admin)</h3>
+            <label>Username Pengajar</label>
+            <input
+              type="text"
+              id="new-teacher-username"
+              placeholder="contoh: pengajar1"
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              id="new-teacher-password"
+              placeholder="password"
+            />
+            <button class="btn" onclick="addNewTeacher()">
+              Tambah Pengajar
+            </button>
+            <p class="small-text" style="margin-top: 6px">
+              Pengajar baru bisa mengelola materi / tantangan / produk, tapi
+              tidak bisa menambah pengajar lagi.
+            </p>
+          </div>
+        </div>
+
+        <!-- PANEL MATERI -->
+        <div id="p-materi" class="panel">
+          <h2>Kelola Materi</h2>
+          <div class="card" style="margin-bottom: 16px">
+            <h3>Tambah / Edit Materi</h3>
+            <label>Judul Materi</label>
+            <input
+              type="text"
+              id="form-materi-judul"
+              placeholder="Judul materi"
+            />
+            <label>Kategori</label>
+            <select id="form-materi-kategori">
+              <option value="mindset">Mindset</option>
+              <option value="finansial">Finansial</option>
+              <option value="editing">Editing</option>
+              <option value="skill">Skill Digital</option>
+              <option value="branding">Personal Branding</option>
+            </select>
+            <label>Poin Reward</label>
+            <input type="number" id="form-materi-poin" value="10" min="1" />
+            <label>Materi ini termasuk materi penting?</label>
+            <select id="form-materi-penting">
+              <option value="tidak">Tidak</option>
+              <option value="ya">Ya</option>
+            </select>
+            <label>Konten / Isi Materi (ringkas saja dulu)</label>
+            <textarea
+              id="form-materi-konten"
+              rows="4"
+              placeholder="Isi materi yang akan dibaca siswa"
+            ></textarea>
+            <button class="btn" id="btn-materi-submit" onclick="addMateri()">
+              Simpan Materi
+            </button>
+            <button
+              class="btn back-btn"
+              id="btn-materi-cancel-edit"
+              style="margin-left: 8px; display: none"
+              onclick="cancelEditMateri()"
+            >
+              Batal Edit
+            </button>
+          </div>
+          <h3>Daftar Materi</h3>
+          <div class="grid" id="pengajar-materi-list"></div>
+        </div>
+
+        <!-- PANEL TANTANGAN -->
+        <div id="p-tantangan" class="panel">
+          <h2>Kelola Tantangan</h2>
+          <div class="card" style="margin-bottom: 16px">
+            <h3>Tambah / Edit Tantangan Baru</h3>
+            <label>Nama Tantangan</label>
+            <input
+              type="text"
+              id="form-tantangan-judul"
+              placeholder="Nama tantangan"
+            />
+            <label>Kategori</label>
+            <select id="form-tantangan-kategori">
+              <option value="mindset">Mindset</option>
+              <option value="finansial">Finansial</option>
+              <option value="skill">Skill Digital</option>
+            </select>
+            <label>Level Minimal Siswa</label>
+            <input type="number" id="form-tantangan-level" value="1" min="1" />
+            <label>Poin Reward (diberikan setelah semua langkah selesai)</label>
+            <input type="number" id="form-tantangan-poin" value="50" min="1" />
+            <label>Langkah-langkah (satu langkah per baris)</label>
+            <textarea
+              id="form-tantangan-steps"
+              rows="4"
+              placeholder="Contoh:
+Baca materi mindset
+Tulis journaling singkat
+Praktikkan 1 hal kecil hari ini"
+            ></textarea>
+            <button
+              class="btn"
+              id="btn-tantangan-submit"
+              onclick="addTantangan()"
+            >
+              Simpan Tantangan
+            </button>
+            <button
+              class="btn back-btn"
+              id="btn-tantangan-cancel-edit"
+              style="margin-left: 8px; display: none"
+              onclick="cancelEditTantangan()"
+            >
+              Batal Edit
+            </button>
+          </div>
+          <h3>Daftar Tantangan</h3>
+          <div class="grid" id="pengajar-tantangan-list"></div>
+        </div>
+
+        <!-- PANEL PRODUK -->
+        <div id="p-produk" class="panel">
+          <h2>Kelola Produk</h2>
+          <div class="card" style="margin-bottom: 16px">
+            <h3>Tambah / Edit Produk</h3>
+            <label>Nama Produk</label>
+            <input
+              type="text"
+              id="form-produk-nama"
+              placeholder="Contoh: Ebook, Kelas Online"
+            />
+            <label>Deskripsi</label>
+            <textarea
+              id="form-produk-deskripsi"
+              rows="3"
+              placeholder="Deskripsi singkat produk"
+            ></textarea>
+            <label>Harga (angka saja)</label>
+            <input type="number" id="form-produk-harga" value="50000" min="0" />
+            <button class="btn" id="btn-produk-submit" onclick="addProduk()">
+              Simpan Produk
+            </button>
+            <button
+              class="btn back-btn"
+              id="btn-produk-cancel-edit"
+              style="margin-left: 8px; display: none"
+              onclick="cancelEditProduk()"
+            >
+              Batal Edit
+            </button>
+          </div>
+          <h3>Daftar Produk</h3>
+          <div class="grid" id="pengajar-produk-list"></div>
+        </div>
+
+        <!-- PANEL ORDER -->
+        <div id="p-order" class="panel">
+          <h2>Order Masuk</h2>
+          <p class="small-text">
+            Order muncul ketika siswa menekan tombol "Order via WhatsApp".
+          </p>
+          <ul id="pengajar-order-list"></ul>
+        </div>
+
+        <!-- PANEL SISWA -->
+        <div id="p-siswa" class="panel">
+          <h2>Daftar Siswa</h2>
+          <p class="small-text">
+            Data ini diambil dari siswa yang pernah login di sistem ini (browser
+            ini).
+          </p>
+          <ul id="pengajar-siswa-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL BADGE -->
+    <div id="modal-badges" class="modal">
+      <div class="modal-content">
+        <h3>Badge & Statusmu</h3>
+        <p id="badge-info"></p>
+        <ul class="small-text">
+          <li>🎖 First Challenge – Selesaikan 1 tantangan</li>
+          <li>⭐ Level Up – Poin mencapai 50</li>
+        </ul>
+        <div class="modal-close">
+          <button onclick="closeModal()">Tutup</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const STORAGE_KEY = "genz_upgrade_state_v1";
+
+      let state = {
+        materi: [],
+        tantangan: [],
+        produk: [],
+        siswa: {}, // username -> {...}
+        teachers: {}, // username -> {password, role}
+        orders: [],
+      };
+
+      let currentSiswaUser = null;
+      let currentTeacherUser = null;
+      let currentMateriDetailId = null;
+      let currentTantanganDetailId = null;
+
+      // id edit
+      let editMateriId = null;
+      let editTantanganId = null;
+      let editProdukId = null;
+
+      // ====== LOAD & SAVE STATE ======
+      function loadState() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          try {
+            state = JSON.parse(raw);
+          } catch (e) {
+            console.error("Gagal parse state, reset baru", e);
+          }
+        }
+        state.materi ||= [];
+        state.tantangan ||= [];
+        state.produk ||= [];
+        state.siswa ||= {};
+        state.teachers ||= {};
+        state.orders ||= [];
+
+        // normalisasi siswa lama
+        for (const u in state.siswa) {
+          const s = state.siswa[u];
+          if (!Array.isArray(s.poinHistory)) {
+            s.poinHistory = [s.poin || 0];
+          }
+          if (typeof s.isBlocked === "undefined") {
+            s.isBlocked = false;
+          }
+          if (typeof s.wa === "undefined") {
+            s.wa = "";
+          }
+        }
+
+        // admin default
+        if (!state.teachers["ach najib supri kasturi"]) {
+          state.teachers["ach najib supri kasturi"] = {
+            password: "achnajib2005",
+            role: "admin",
+          };
+        }
+
+        // materi contoh
+        if (state.materi.length === 0) {
+          state.materi.push(
+            {
+              id: 1,
+              judul: "Mindset Dasar Anak Gen Z",
+              kategori: "mindset",
+              poin: 10,
+              penting: true,
+              konten:
+                "Materi tentang bagaimana memulai perubahan kecil, mengatur fokus, dan belajar konsisten sebagai Gen Z.",
+            },
+            {
+              id: 2,
+              judul: "Ngatur Uang Jajan Sederhana",
+              kategori: "finansial",
+              poin: 15,
+              penting: true,
+              konten:
+                "Belajar membagi uang jajan menjadi kebutuhan, tabungan, dan keinginan.",
+            }
+          );
+        }
+        if (state.tantangan.length === 0) {
+          state.tantangan.push({
+            id: 1,
+            judul: "Mindset Challenge 1",
+            kategori: "mindset",
+            levelMin: 1,
+            poinReward: 50,
+            steps: [
+              "Baca materi 'Mindset Dasar Anak Gen Z'",
+              "Tulis 3 hal positif tentang dirimu",
+              "Praktikkan 1 perubahan kecil hari ini",
+            ],
+          });
+        }
+        saveState();
+      }
+
+      function saveState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function getCurrentTeacher() {
+        if (!currentTeacherUser) return null;
+        return state.teachers[currentTeacherUser] || null;
+      }
+      function getCurrentTeacherRole() {
+        const t = getCurrentTeacher();
+        return t?.role || "pengajar";
+      }
+
+      // ====== TAMPILAN AWAL / LOGIN ======
+      const welcome = document.getElementById("welcome");
+      const loginSiswaDiv = document.getElementById("login-siswa");
+      const loginPengajarDiv = document.getElementById("login-pengajar");
+      const dashboardSiswa = document.getElementById("dashboard-siswa");
+      const dashboardPengajar = document.getElementById("dashboard-pengajar");
+
+      function resetView() {
+        welcome.classList.add("hidden");
+        loginSiswaDiv.classList.add("hidden");
+        loginPengajarDiv.classList.add("hidden");
+        dashboardSiswa.classList.add("hidden");
+        dashboardPengajar.classList.add("hidden");
+      }
+
+      function clearSiswaLoginForm() {
+        document.getElementById("siswa-username").value = "";
+        document.getElementById("siswa-nama").value = "";
+        document.getElementById("siswa-wa").value = "";
+        document.getElementById("siswa-password").value = "";
+        const extra = document.getElementById("siswa-extra-fields");
+        if (extra) extra.style.display = "block";
+        const note = document.getElementById("siswa-login-note");
+        if (note) {
+          note.textContent =
+            "Jika username sudah pernah dipakai, kamu cukup isi username dan password yang sama.";
+        }
+      }
+
+      function showLogin(role) {
+        resetView();
+        document.body.classList.remove("centered");
+        if (role === "siswa") {
+          clearSiswaLoginForm();
+          loginSiswaDiv.classList.remove("hidden");
+        } else {
+          loginPengajarDiv.classList.remove("hidden");
+        }
+        document.body.style.background =
+          "linear-gradient(135deg, #6a0dad, #8a2be2)";
+      }
+
+      function backToWelcome() {
+        resetView();
+        welcome.classList.remove("hidden");
+        document.body.classList.add("centered");
+        document.body.style.background =
+          "linear-gradient(135deg, #6a0dad, #8a2be2)";
+      }
+
+      function onSiswaUsernameChange() {
+        const username = document.getElementById("siswa-username").value.trim();
+        const extra = document.getElementById("siswa-extra-fields");
+        const note = document.getElementById("siswa-login-note");
+        const existing = state.siswa[username];
+
+        if (existing) {
+          // akun sudah ada -> hanya username & password
+          extra.style.display = "none";
+          note.textContent =
+            "Akun sudah terdaftar. Cukup masukkan username & password yang sama.";
+        } else {
+          // akun baru -> perlu nama dan WA
+          extra.style.display = "block";
+          note.textContent =
+            "Untuk pertama kali daftar, isi Nama Lengkap dan No WhatsApp aktif.";
+        }
+      }
+
+      function loginSiswa() {
+        const username = document.getElementById("siswa-username").value.trim();
+        const nama = document.getElementById("siswa-nama").value.trim();
+        const wa = document.getElementById("siswa-wa").value.trim();
+        const password = document.getElementById("siswa-password").value.trim();
+
+        if (!username || !password) {
+          alert("Username dan password wajib diisi.");
+          return;
+        }
+
+        const existing = state.siswa[username];
+
+        if (existing) {
+          if (existing.isBlocked) {
+            alert(
+              "Akun ini telah diblokir oleh pengajar/admin. Silakan hubungi pengajar."
+            );
+            return;
+          }
+          if (existing.password !== password) {
+            alert(
+              "Password salah untuk username itu. Kalau lupa username / password, tidak bisa masuk lagi ke akun lama."
+            );
+            return;
+          }
+          currentSiswaUser = username;
+          saveState();
+          clearSiswaLoginForm();
+          openSiswaDashboard();
+          return;
+        }
+
+        // akun baru (pertama kali)
+        if (!nama) {
+          alert("Isi nama lengkap untuk pendaftaran baru.");
+          return;
+        }
+        if (!wa) {
+          alert("Isi No WhatsApp aktif untuk pendaftaran baru.");
+          return;
+        }
+
+        state.siswa[username] = {
+          username,
+          nama,
+          wa,
+          password,
+          poin: 0,
+          level: 1,
+          poinHistory: [0],
+          completedMateri: [],
+          activeTantangan: null,
+          isBlocked: false,
+        };
+
+        currentSiswaUser = username;
+        saveState();
+        clearSiswaLoginForm();
+        openSiswaDashboard();
+      }
+
+      function loginPengajar() {
+        const username = document
+          .getElementById("pengajar-username")
+          .value.trim();
+        const password = document
+          .getElementById("pengajar-password")
+          .value.trim();
+
+        if (!username || !password) {
+          alert("Username dan password wajib diisi.");
+          return;
+        }
+        const t = state.teachers[username];
+        if (!t || t.password !== password) {
+          alert("Username atau password pengajar salah.");
+          return;
+        }
+        currentTeacherUser = username;
+        openPengajarDashboard();
+      }
+
+      // ====== DASHBOARD SISWA ======
+      function getCurrentSiswa() {
+        if (!currentSiswaUser) return null;
+        return state.siswa[currentSiswaUser] || null;
+      }
+
+      function openSiswaDashboard() {
+        const siswa = getCurrentSiswa();
+        if (!siswa) return;
+        document.getElementById("halo-siswa").textContent =
+          "Halo, " + siswa.nama;
+        updateLevelPoinText();
+
+        resetView();
+        document.body.classList.remove("centered");
+        document.body.style.background = "#f5f7fb";
+        dashboardSiswa.classList.remove("hidden");
+
+        showSiswaSection("home");
+
+        renderMateriPenting();
+        renderMateriListTabs();
+        renderMateriList();
+        renderTantanganSiswa();
+        renderTantanganList();
+        renderProdukList();
+        renderChartPoin();
+      }
+
+      function updateLevelPoinText() {
+        const siswa = getCurrentSiswa();
+        if (!siswa) return;
+        siswa.level = 1 + Math.floor(siswa.poin / 50);
+        document.getElementById("level-poin").textContent =
+          "Level " + siswa.level + " • " + siswa.poin + " poin";
+        saveState();
+      }
+
+      function showSiswaSection(sec) {
+        document.getElementById("siswa-home").classList.add("hidden");
+        document.getElementById("siswa-materi").classList.add("hidden");
+        document.getElementById("siswa-tantangan").classList.add("hidden");
+        document.getElementById("siswa-produk").classList.add("hidden");
+        document.getElementById("materi-detail-page").classList.add("hidden");
+        document
+          .getElementById("tantangan-detail-page")
+          .classList.add("hidden");
+
+        if (sec === "home")
+          document.getElementById("siswa-home").classList.remove("hidden");
+        if (sec === "materi")
+          document.getElementById("siswa-materi").classList.remove("hidden");
+        if (sec === "tantangan")
+          document.getElementById("siswa-tantangan").classList.remove("hidden");
+        if (sec === "produk")
+          document.getElementById("siswa-produk").classList.remove("hidden");
+
+        if (sec === "home") {
+          renderTantanganSiswa();
+          renderChartPoin();
+        }
+        if (sec === "materi") {
+          renderMateriList();
+        }
+        if (sec === "tantangan") {
+          renderTantanganSiswa();
+          renderTantanganList();
+        }
+        if (sec === "produk") {
+          renderProdukList();
+        }
+      }
+
+      // ====== MATERI (SISWA) ======
+      function renderMateriPenting() {
+        const wrap = document.getElementById("slider-materi-penting");
+        wrap.innerHTML = "";
+        const penting = state.materi.filter((m) => m.penting).slice(0, 3);
+        if (penting.length === 0) {
+          wrap.innerHTML =
+            "<div class='small-text' style='color:#333;'>Belum ada materi penting. Pengajar bisa menambah di dashboard.</div>";
+          return;
+        }
+        penting.forEach((m) => {
+          const card = document.createElement("div");
+          card.className = "card large";
+          card.innerHTML = `
+          <h3>${m.judul}</h3>
+          <p class="small-text">Kategori: ${labelKategori(m.kategori)} • +${
+            m.poin
+          } poin</p>
+          <p class="small-text">Klik baca untuk membuka halaman materi.</p>
+          <button class="btn" onclick="openMateriDetail(${m.id})">Baca</button>
+        `;
+          wrap.appendChild(card);
+        });
+      }
+
+      function labelKategori(k) {
+        switch (k) {
+          case "mindset":
+            return "Mindset";
+          case "finansial":
+            return "Finansial";
+          case "editing":
+            return "Editing";
+          case "skill":
+            return "Skill Digital";
+          case "branding":
+            return "Personal Branding";
+          default:
+            return k;
+        }
+      }
+
+      function renderMateriListTabs() {
+        const tabsWrap = document.getElementById("tabs-materi");
+        tabsWrap.innerHTML = "";
+        const cats = [
+          "all",
+          "mindset",
+          "finansial",
+          "editing",
+          "skill",
+          "branding",
+        ];
+        const labels = {
+          all: "Semua",
+          mindset: "Mindset",
+          finansial: "Finansial",
+          editing: "Editing",
+          skill: "Skill Digital",
+          branding: "Personal Branding",
+        };
+        cats.forEach((cat) => {
+          const div = document.createElement("div");
+          div.className = "tab" + (cat === "all" ? " active" : "");
+          div.textContent = labels[cat];
+          div.onclick = () => filterMateri(cat, div);
+          tabsWrap.appendChild(div);
+        });
+      }
+
+      function renderMateriList(filter = "all") {
+        const wrap = document.getElementById("materi-list");
+        wrap.innerHTML = "";
+        let list = state.materi;
+        if (filter !== "all") {
+          list = list.filter((m) => m.kategori === filter);
+        }
+        if (list.length === 0) {
+          wrap.innerHTML =
+            "<div class='small-text'>Belum ada materi untuk kategori ini.</div>";
+          return;
+        }
+        list.forEach((m) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+          <h3>${m.judul}</h3>
+          <p class="small-text">Kategori: ${labelKategori(m.kategori)} • +${
+            m.poin
+          } poin</p>
+          <button class="btn" onclick="openMateriDetail(${
+            m.id
+          })">Baca Materi</button>
+        `;
+          wrap.appendChild(card);
+        });
+      }
+
+      function filterMateri(cat, el) {
+        renderMateriList(cat);
+        const tabs = document.querySelectorAll("#tabs-materi .tab");
+        tabs.forEach((t) => t.classList.remove("active"));
+        if (el) el.classList.add("active");
+      }
+
+      function openMateriDetail(id) {
+        const m = state.materi.find((x) => x.id === id);
+        const siswa = getCurrentSiswa();
+        if (!m || !siswa) return;
+        currentMateriDetailId = id;
+
+        document.getElementById("materi-detail-title").textContent = m.judul;
+        document.getElementById("materi-detail-kategori").textContent =
+          "Kategori: " + labelKategori(m.kategori) + " • Poin: " + m.poin;
+        document.getElementById("materi-detail-content").textContent =
+          m.konten || "Belum ada konten tertulis untuk materi ini.";
+        const statusEl = document.getElementById("materi-detail-status");
+        const btn = document.getElementById("materi-detail-done-btn");
+
+        const already = siswa.completedMateri.includes(id);
+        if (already) {
+          btn.disabled = true;
+          btn.textContent = "Materi Sudah Selesai";
+          statusEl.textContent = "Kamu sudah mendapatkan poin dari materi ini.";
+        } else {
+          btn.disabled = false;
+          btn.textContent = "Tandai Selesai & Tambah Poin";
+          statusEl.textContent =
+            "Setelah selesai membaca, tekan tombol ini untuk mendapatkan poin.";
+        }
+
+        document.getElementById("siswa-home").classList.add("hidden");
+        document.getElementById("siswa-materi").classList.add("hidden");
+        document
+          .getElementById("materi-detail-page")
+          .classList.remove("hidden");
+      }
+
+      function closeMateriDetail() {
+        document.getElementById("materi-detail-page").classList.add("hidden");
+        showSiswaSection("materi");
+      }
+
+      function finishMateriFromDetail() {
+        const siswa = getCurrentSiswa();
+        if (!siswa || currentMateriDetailId == null) return;
+        const m = state.materi.find((x) => x.id === currentMateriDetailId);
+        if (!m) return;
+
+        if (siswa.completedMateri.includes(m.id)) {
+          alert("Kamu sudah menyelesaikan materi ini sebelumnya.");
+          return;
+        }
+        siswa.completedMateri.push(m.id);
+        siswa.poin += m.poin;
+        siswa.poinHistory.push(siswa.poin);
+        updateLevelPoinText();
+        renderChartPoin();
+        saveState();
+
+        document.getElementById("materi-detail-done-btn").disabled = true;
+        document.getElementById("materi-detail-done-btn").textContent =
+          "Materi Sudah Selesai";
+        document.getElementById("materi-detail-status").textContent =
+          "Poin sudah ditambahkan. Terima kasih sudah menyelesaikan materi ini.";
+        alert("Mantap! Kamu mendapatkan +" + m.poin + " poin dari materi ini.");
+      }
+
+      // ====== TANTANGAN (SISWA) ======
+      function getActiveTantanganObj(siswa) {
+        if (!siswa || !siswa.activeTantangan) return null;
+        const t = state.tantangan.find(
+          (x) => x.id === siswa.activeTantangan.id
+        );
+        if (!t) return null;
+        return t;
+      }
+
+      function renderTantanganSiswa() {
+        const boxHome = document.getElementById("tantangan-aktif-box");
+        const boxPage = document.getElementById("tantangan-aktif-box-page");
+        const siswa = getCurrentSiswa();
+        if (!siswa) {
+          boxHome.innerHTML =
+            "<p class='small-text'>Login sebagai siswa untuk melihat tantangan.</p>";
+          boxPage.innerHTML = boxHome.innerHTML;
+          return;
+        }
+        const active = siswa.activeTantangan;
+        if (!active) {
+          const info =
+            "<p class='small-text'>Kamu belum memilih tantangan. Buka menu Tantangan untuk memilih satu.</p>";
+          boxHome.innerHTML = info;
+          boxPage.innerHTML = info;
+          return;
+        }
+        const tantangan = state.tantangan.find((t) => t.id === active.id);
+        if (!tantangan) {
+          boxHome.innerHTML =
+            "<p class='small-text'>Tantangan aktif tidak ditemukan.</p>";
+          boxPage.innerHTML = boxHome.innerHTML;
+          return;
+        }
+
+        const stepsTotal = tantangan.steps.length;
+        const selesaiSteps = active.stepsStatus.filter(Boolean).length;
+        const percent = Math.round((selesaiSteps / stepsTotal) * 100);
+        const status = active.finished ? "Selesai" : "Berjalan";
+
+        const html = `
+        <h4>${tantangan.judul}</h4>
+        <p class="small-text">Kategori: ${labelKategori(
+          tantangan.kategori
+        )} • Level minimal: ${tantangan.levelMin}</p>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${percent}%;"></div>
+        </div>
+        <p class="small-text">Status: ${status} • ${selesaiSteps}/${stepsTotal} langkah selesai</p>
+        <button class="btn" onclick="openTantanganDetail(${
+          tantangan.id
+        })">Buka Halaman Tantangan</button>
+      `;
+        boxHome.innerHTML = html;
+        boxPage.innerHTML = html;
+      }
+
+      function renderTantanganList() {
+        const wrap = document.getElementById("tantangan-list");
+        wrap.innerHTML = "";
+        const siswa = getCurrentSiswa();
+        if (!siswa) {
+          wrap.innerHTML =
+            "<div class='small-text'>Login dulu sebagai siswa.</div>";
+          return;
+        }
+        const hasActive =
+          !!siswa.activeTantangan && !siswa.activeTantangan.finished;
+
+        state.tantangan.forEach((t) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          let btnHtml = "";
+          if (hasActive) {
+            btnHtml = `<button class="btn" disabled>Sudah ada tantangan aktif</button>`;
+          } else {
+            btnHtml = `<button class="btn" onclick="pilihTantangan(${t.id})">Pilih Tantangan Ini</button>`;
+          }
+          card.innerHTML = `
+          <h3>${t.judul}</h3>
+          <p class="small-text">
+            Kategori: ${labelKategori(t.kategori)} • Level minimal: ${
+            t.levelMin
+          }<br>
+            Poin reward: ${t.poinReward}
+          </p>
+          ${btnHtml}
+        `;
+          wrap.appendChild(card);
+        });
+        if (state.tantangan.length === 0) {
+          wrap.innerHTML =
+            "<div class='small-text'>Belum ada tantangan. Pengajar bisa menambah di dashboard.</div>";
+        }
+      }
+
+      function pilihTantangan(id) {
+        const siswa = getCurrentSiswa();
+        if (!siswa) return;
+        if (siswa.activeTantangan && !siswa.activeTantangan.finished) {
+          alert("Selesaikan tantangan aktif dulu sebelum memilih yang lain.");
+          return;
+        }
+        const t = state.tantangan.find((x) => x.id === id);
+        if (!t) return;
+        siswa.activeTantangan = {
+          id: t.id,
+          stepsStatus: t.steps.map(() => false),
+          finished: false,
+        };
+        saveState();
+        renderTantanganSiswa();
+        renderTantanganList();
+        openTantanganDetail(id);
+      }
+
+      function openTantanganDetail(id) {
+        const siswa = getCurrentSiswa();
+        if (!siswa) return;
+        const t = state.tantangan.find((x) => x.id === id);
+        if (!t) return;
+        if (!siswa.activeTantangan || siswa.activeTantangan.id !== id) {
+          alert("Tantangan ini belum dipilih sebagai tantangan aktif.");
+          return;
+        }
+
+        currentTantanganDetailId = id;
+        const active = siswa.activeTantangan;
+        document.getElementById("tantangan-detail-title").textContent = t.judul;
+        document.getElementById(
+          "tantangan-detail-info"
+        ).textContent = `Kategori: ${labelKategori(
+          t.kategori
+        )} • Level minimal: ${t.levelMin} • Poin reward: ${t.poinReward}`;
+
+        const stepsWrap = document.getElementById("tantangan-detail-steps");
+        stepsWrap.innerHTML = "";
+        t.steps.forEach((s, idx) => {
+          const idCheck = "step-check-" + idx;
+          const div = document.createElement("div");
+          div.style.marginBottom = "6px";
+          div.innerHTML = `
+          <label style="font-size:0.9em;">
+            <input type="checkbox" id="${idCheck}" ${
+            active.stepsStatus[idx] ? "checked" : ""
+          } 
+              onchange="toggleStep(${idx})">
+            ${s}
+          </label>
+        `;
+          stepsWrap.appendChild(div);
+        });
+
+        updateTantanganDetailStatus();
+
+        document.getElementById("siswa-home").classList.add("hidden");
+        document.getElementById("siswa-tantangan").classList.add("hidden");
+        document
+          .getElementById("tantangan-detail-page")
+          .classList.remove("hidden");
+      }
+
+      function closeTantanganDetail() {
+        document
+          .getElementById("tantangan-detail-page")
+          .classList.add("hidden");
+        showSiswaSection("tantangan");
+      }
+
+      function toggleStep(idx) {
+        const siswa = getCurrentSiswa();
+        const tAktif = siswa?.activeTantangan;
+        if (!siswa || !tAktif) return;
+        tAktif.stepsStatus[idx] = !tAktif.stepsStatus[idx];
+        saveState();
+        updateTantanganDetailStatus();
+        renderTantanganSiswa();
+      }
+
+      function updateTantanganDetailStatus() {
+        const siswa = getCurrentSiswa();
+        const tAktif = siswa?.activeTantangan;
+        if (!siswa || !tAktif) return;
+        const t = state.tantangan.find((x) => x.id === tAktif.id);
+        if (!t) return;
+
+        const total = t.steps.length;
+        const done = tAktif.stepsStatus.filter(Boolean).length;
+        const allDone = done === total;
+        const statusEl = document.getElementById("tantangan-detail-status");
+        const btn = document.getElementById("tantangan-detail-finish-btn");
+
+        if (tAktif.finished) {
+          btn.disabled = true;
+          statusEl.textContent =
+            "Tantangan sudah selesai. Poin sudah ditambahkan.";
+        } else {
+          btn.disabled = !allDone;
+          statusEl.textContent = allDone
+            ? "Semua langkah sudah dicentang. Tekan tombol di atas untuk menyelesaikan tantangan."
+            : `Langkah selesai: ${done}/${total}. Semua langkah harus dicentang sebelum menyelesaikan tantangan.`;
+        }
+      }
+
+      function finishTantangan() {
+        const siswa = getCurrentSiswa();
+        const tAktif = siswa?.activeTantangan;
+        if (!siswa || !tAktif) return;
+        const t = state.tantangan.find((x) => x.id === tAktif.id);
+        if (!t) return;
+
+        const total = t.steps.length;
+        const done = tAktif.stepsStatus.filter(Boolean).length;
+        if (done !== total) {
+          alert("Belum semua langkah dicentang.");
+          return;
+        }
+        if (tAktif.finished) {
+          alert("Tantangan sudah diselesaikan sebelumnya.");
+          return;
+        }
+
+        siswa.poin += t.poinReward;
+        siswa.poinHistory.push(siswa.poin);
+        tAktif.finished = true;
+        siswa.activeTantangan = null;
+        updateLevelPoinText();
+        renderChartPoin();
+        saveState();
+
+        document.getElementById("tantangan-detail-finish-btn").disabled = true;
+        document.getElementById("tantangan-detail-status").textContent =
+          "Tantangan selesai. Poin sudah ditambahkan. Kamu sekarang bisa memilih tantangan lain.";
+        alert(
+          "Selamat! Tantangan selesai. Kamu mendapatkan +" +
+            t.poinReward +
+            " poin."
+        );
+
+        renderTantanganSiswa();
+        renderTantanganList();
+      }
+
+      // ====== PRODUK (SISWA) ======
+      function renderProdukList() {
+        const wrap = document.getElementById("produk-list");
+        wrap.innerHTML = "";
+        if (!state.produk || state.produk.length === 0) {
+          wrap.innerHTML =
+            "<div class='small-text'>Belum ada produk. Pengajar belum menambah produk apapun.</div>";
+          return;
+        }
+        const siswa = getCurrentSiswa();
+        state.produk.forEach((p) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+          <h3>${p.nama}</h3>
+          <p class="small-text">${p.deskripsi || ""}</p>
+          <p class="small-text">Harga: ${Number(p.harga || 0).toLocaleString(
+            "id-ID"
+          )}</p>
+          <button class="btn" onclick="orderProduk(${
+            p.id
+          })">Order via WhatsApp</button>
+        `;
+          wrap.appendChild(card);
+        });
+      }
+
+      function orderProduk(id) {
+        const siswa = getCurrentSiswa();
+        if (!siswa) {
+          alert("Login sebagai siswa dulu.");
+          return;
+        }
+        const p = state.produk.find((x) => x.id === id);
+        if (!p) return;
+
+        const order = {
+          id: (state.orders.length || 0) + 1,
+          siswaUsername: siswa.username,
+          siswaNama: siswa.nama,
+          produkId: p.id,
+          produkNama: p.nama,
+          waktu: new Date().toLocaleString("id-ID"),
+        };
+        state.orders.push(order);
+        saveState();
+
+        const pesan = encodeURIComponent(
+          `Halo, saya ${siswa.nama} (username: ${siswa.username}, WA: ${
+            siswa.wa || "-"
+          }) ingin order produk: ${p.nama} (harga ${Number(
+            p.harga || 0
+          ).toLocaleString("id-ID")})`
+        );
+        window.open("https://wa.me/6281234567890?text=" + pesan, "_blank");
+        alert(
+          "Order tercatat dan dibuka di WhatsApp. Pengajar akan melihat di dashboard Order."
+        );
+      }
+
+      // ====== GRAFIK POIN SISWA ======
+      function renderChartPoin() {
+        const wrap = document.getElementById("chart-poin");
+        wrap.innerHTML = "";
+        const siswa = getCurrentSiswa();
+        if (!siswa || !siswa.poinHistory || siswa.poinHistory.length === 0) {
+          wrap.textContent = "Belum ada aktivitas poin.";
+          return;
+        }
+        const h = siswa.poinHistory;
+        const max = Math.max(...h) || 1;
+        h.forEach((v, idx) => {
+          const bar = document.createElement("div");
+          bar.className = "chart-bar";
+          const tinggi = Math.max(10, (v / max) * 100);
+          bar.style.height = tinggi + "%";
+          bar.textContent = idx;
+          bar.title = `Step ${idx}: ${v} poin`;
+          wrap.appendChild(bar);
+        });
+      }
+
+      // ====== DASHBOARD PENGAJAR ======
+      function openPengajarDashboard() {
+        resetView();
+        document.body.classList.remove("centered");
+        document.body.style.background = "#f5f7fb";
+        dashboardPengajar.classList.remove("hidden");
+        showPengajarPanel("p-dashboard");
+        renderPengajarSummary();
+        renderPengajarMateri();
+        renderPengajarTantangan();
+        renderPengajarProduk();
+        renderPengajarOrders();
+        renderPengajarSiswa();
+
+        const t = state.teachers[currentTeacherUser];
+        document.getElementById("admin-add-teacher").style.display =
+          t && t.role === "admin" ? "block" : "none";
+      }
+
+      function showPengajarPanel(id) {
+        const panels = document.querySelectorAll(".panel");
+        panels.forEach((p) => p.classList.remove("active"));
+        const panel = document.getElementById(id);
+        if (panel) panel.classList.add("active");
+
+        renderPengajarSummary();
+        renderPengajarMateri();
+        renderPengajarTantangan();
+        renderPengajarProduk();
+        renderPengajarOrders();
+        renderPengajarSiswa();
+      }
+
+      function renderPengajarSummary() {
+        const wrap = document.getElementById("pengajar-summary");
+        wrap.innerHTML = "";
+        const totalSiswa = Object.keys(state.siswa).length;
+        const totalTantangan = state.tantangan.length;
+        const totalProduk = state.produk.length;
+        const totalOrder = state.orders.length;
+
+        const data = [
+          { judul: "Total Siswa", nilai: totalSiswa },
+          { judul: "Tantangan", nilai: totalTantangan },
+          { judul: "Produk", nilai: totalProduk },
+          { judul: "Order Masuk", nilai: totalOrder },
+        ];
+        data.forEach((d) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `<h3>${d.judul}</h3><p>${d.nilai}</p>`;
+          wrap.appendChild(card);
+        });
+      }
+
+      function addNewTeacher() {
+        const t = state.teachers[currentTeacherUser];
+        if (!t || t.role !== "admin") {
+          alert("Hanya admin yang boleh menambah pengajar.");
+          return;
+        }
+        const username = document
+          .getElementById("new-teacher-username")
+          .value.trim();
+        const password = document
+          .getElementById("new-teacher-password")
+          .value.trim();
+        if (!username || !password) {
+          alert("Isi username dan password pengajar baru.");
+          return;
+        }
+        if (state.teachers[username]) {
+          alert("Username pengajar sudah ada.");
+          return;
+        }
+        state.teachers[username] = {
+          password,
+          role: "pengajar",
+        };
+        saveState();
+        document.getElementById("new-teacher-username").value = "";
+        document.getElementById("new-teacher-password").value = "";
+        alert("Pengajar baru ditambahkan.");
+      }
+
+      // ====== CRUD MATERI (PENGAJAR) ======
+      function resetMateriForm() {
+        document.getElementById("form-materi-judul").value = "";
+        document.getElementById("form-materi-kategori").value = "mindset";
+        document.getElementById("form-materi-poin").value = "10";
+        document.getElementById("form-materi-penting").value = "tidak";
+        document.getElementById("form-materi-konten").value = "";
+      }
+
+      function addMateri() {
+        const judul = document.getElementById("form-materi-judul").value.trim();
+        const kategori = document.getElementById("form-materi-kategori").value;
+        const poin = Number(
+          document.getElementById("form-materi-poin").value || 0
+        );
+        const penting =
+          document.getElementById("form-materi-penting").value === "ya";
+        const konten = document
+          .getElementById("form-materi-konten")
+          .value.trim();
+
+        if (!judul) {
+          alert("Judul materi wajib diisi.");
+          return;
+        }
+
+        if (editMateriId) {
+          const m = state.materi.find((x) => x.id === editMateriId);
+          if (m) {
+            m.judul = judul;
+            m.kategori = kategori;
+            m.poin = poin;
+            m.penting = penting;
+            m.konten = konten;
+          }
+          editMateriId = null;
+          document.getElementById("btn-materi-submit").textContent =
+            "Simpan Materi";
+          document.getElementById("btn-materi-cancel-edit").style.display =
+            "none";
+          alert("Materi berhasil diupdate.");
+        } else {
+          const newId =
+            (state.materi.length
+              ? Math.max(...state.materi.map((m) => m.id))
+              : 0) + 1;
+          state.materi.push({
+            id: newId,
+            judul,
+            kategori,
+            poin,
+            penting,
+            konten,
+          });
+          alert("Materi ditambahkan.");
+        }
+
+        saveState();
+        resetMateriForm();
+        renderPengajarMateri();
+        renderMateriPenting();
+        renderMateriList();
+      }
+
+      function editMateri(id) {
+        const m = state.materi.find((x) => x.id === id);
+        if (!m) return;
+        editMateriId = id;
+        document.getElementById("form-materi-judul").value = m.judul;
+        document.getElementById("form-materi-kategori").value = m.kategori;
+        document.getElementById("form-materi-poin").value = m.poin;
+        document.getElementById("form-materi-penting").value = m.penting
+          ? "ya"
+          : "tidak";
+        document.getElementById("form-materi-konten").value = m.konten || "";
+        document.getElementById("btn-materi-submit").textContent =
+          "Update Materi";
+        document.getElementById("btn-materi-cancel-edit").style.display =
+          "inline-block";
+        showPengajarPanel("p-materi");
+      }
+
+      function cancelEditMateri() {
+        editMateriId = null;
+        resetMateriForm();
+        document.getElementById("btn-materi-submit").textContent =
+          "Simpan Materi";
+        document.getElementById("btn-materi-cancel-edit").style.display =
+          "none";
+      }
+
+      function deleteMateri(id) {
+        if (!confirm("Yakin ingin menghapus materi ini?")) return;
+        state.materi = state.materi.filter((m) => m.id !== id);
+        saveState();
+        renderPengajarMateri();
+        renderMateriPenting();
+        renderMateriList();
+      }
+
+      function renderPengajarMateri() {
+        const wrap = document.getElementById("pengajar-materi-list");
+        wrap.innerHTML = "";
+        if (!state.materi.length) {
+          wrap.innerHTML = "<div class='small-text'>Belum ada materi.</div>";
+          return;
+        }
+        state.materi.forEach((m) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+          <h3>${m.judul}</h3>
+          <p class="small-text">Kategori: ${labelKategori(
+            m.kategori
+          )} • Poin: ${m.poin} • Penting: ${m.penting ? "Ya" : "Tidak"}</p>
+          <button class="btn-secondary" onclick="editMateri(${
+            m.id
+          })">Edit</button>
+          <button class="btn back-btn" style="margin-left:6px;margin-top:6px;" onclick="deleteMateri(${
+            m.id
+          })">Hapus</button>
+        `;
+          wrap.appendChild(card);
+        });
+      }
+
+      // ====== CRUD TANTANGAN (PENGAJAR) ======
+      function resetTantanganForm() {
+        document.getElementById("form-tantangan-judul").value = "";
+        document.getElementById("form-tantangan-kategori").value = "mindset";
+        document.getElementById("form-tantangan-level").value = "1";
+        document.getElementById("form-tantangan-poin").value = "50";
+        document.getElementById("form-tantangan-steps").value = "";
+      }
+
+      function addTantangan() {
+        const judul = document
+          .getElementById("form-tantangan-judul")
+          .value.trim();
+        const kategori = document.getElementById(
+          "form-tantangan-kategori"
+        ).value;
+        const level = Number(
+          document.getElementById("form-tantangan-level").value || 1
+        );
+        const poin = Number(
+          document.getElementById("form-tantangan-poin").value || 0
+        );
+        const stepsRaw = document
+          .getElementById("form-tantangan-steps")
+          .value.trim();
+
+        if (!judul || !stepsRaw) {
+          alert("Judul dan langkah-langkah wajib diisi.");
+          return;
+        }
+        const steps = stepsRaw
+          .split("\n")
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        if (editTantanganId) {
+          const t = state.tantangan.find((x) => x.id === editTantanganId);
+          if (t) {
+            t.judul = judul;
+            t.kategori = kategori;
+            t.levelMin = level;
+            t.poinReward = poin;
+            t.steps = steps;
+          }
+          editTantanganId = null;
+          document.getElementById("btn-tantangan-submit").textContent =
+            "Simpan Tantangan";
+          document.getElementById("btn-tantangan-cancel-edit").style.display =
+            "none";
+          alert("Tantangan berhasil diupdate.");
+        } else {
+          const newId =
+            (state.tantangan.length
+              ? Math.max(...state.tantangan.map((t) => t.id))
+              : 0) + 1;
+          state.tantangan.push({
+            id: newId,
+            judul,
+            kategori,
+            levelMin: level,
+            poinReward: poin,
+            steps,
+          });
+          alert("Tantangan ditambahkan.");
+        }
+
+        saveState();
+        resetTantanganForm();
+        renderPengajarTantangan();
+        renderTantanganList();
+      }
+
+      function editTantangan(id) {
+        const t = state.tantangan.find((x) => x.id === id);
+        if (!t) return;
+        editTantanganId = id;
+        document.getElementById("form-tantangan-judul").value = t.judul;
+        document.getElementById("form-tantangan-kategori").value = t.kategori;
+        document.getElementById("form-tantangan-level").value = t.levelMin;
+        document.getElementById("form-tantangan-poin").value = t.poinReward;
+        document.getElementById("form-tantangan-steps").value =
+          t.steps.join("\n");
+        document.getElementById("btn-tantangan-submit").textContent =
+          "Update Tantangan";
+        document.getElementById("btn-tantangan-cancel-edit").style.display =
+          "inline-block";
+        showPengajarPanel("p-tantangan");
+      }
+
+      function cancelEditTantangan() {
+        editTantanganId = null;
+        resetTantanganForm();
+        document.getElementById("btn-tantangan-submit").textContent =
+          "Simpan Tantangan";
+        document.getElementById("btn-tantangan-cancel-edit").style.display =
+          "none";
+      }
+
+      function deleteTantangan(id) {
+        if (!confirm("Yakin ingin menghapus tantangan ini?")) return;
+        state.tantangan = state.tantangan.filter((t) => t.id !== id);
+        saveState();
+        renderPengajarTantangan();
+        renderTantanganList();
+        renderTantanganSiswa();
+      }
+
+      function renderPengajarTantangan() {
+        const wrap = document.getElementById("pengajar-tantangan-list");
+        wrap.innerHTML = "";
+        if (!state.tantangan.length) {
+          wrap.innerHTML = "<div class='small-text'>Belum ada tantangan.</div>";
+          return;
+        }
+        state.tantangan.forEach((t) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+          <h3>${t.judul}</h3>
+          <p class="small-text">
+            Kategori: ${labelKategori(t.kategori)} • Level minimal: ${
+            t.levelMin
+          }<br>
+            Poin reward: ${t.poinReward}<br>
+            Langkah: ${t.steps.length} langkah
+          </p>
+          <button class="btn-secondary" onclick="editTantangan(${
+            t.id
+          })">Edit</button>
+          <button class="btn back-btn" style="margin-left:6px;margin-top:6px;" onclick="deleteTantangan(${
+            t.id
+          })">Hapus</button>
+        `;
+          wrap.appendChild(card);
+        });
+      }
+
+      // ====== CRUD PRODUK (PENGAJAR) ======
+      function resetProdukForm() {
+        document.getElementById("form-produk-nama").value = "";
+        document.getElementById("form-produk-deskripsi").value = "";
+        document.getElementById("form-produk-harga").value = "50000";
+      }
+
+      function addProduk() {
+        const nama = document.getElementById("form-produk-nama").value.trim();
+        const deskripsi = document
+          .getElementById("form-produk-deskripsi")
+          .value.trim();
+        const harga = Number(
+          document.getElementById("form-produk-harga").value || 0
+        );
+
+        if (!nama) {
+          alert("Nama produk wajib diisi.");
+          return;
+        }
+
+        if (editProdukId) {
+          const p = state.produk.find((x) => x.id === editProdukId);
+          if (p) {
+            p.nama = nama;
+            p.deskripsi = deskripsi;
+            p.harga = harga;
+          }
+          editProdukId = null;
+          document.getElementById("btn-produk-submit").textContent =
+            "Simpan Produk";
+          document.getElementById("btn-produk-cancel-edit").style.display =
+            "none";
+          alert("Produk berhasil diupdate.");
+        } else {
+          const newId =
+            (state.produk.length
+              ? Math.max(...state.produk.map((p) => p.id))
+              : 0) + 1;
+          state.produk.push({ id: newId, nama, deskripsi, harga });
+          alert("Produk ditambahkan.");
+        }
+
+        saveState();
+        resetProdukForm();
+        renderPengajarProduk();
+        renderProdukList();
+      }
+
+      function editProduk(id) {
+        const p = state.produk.find((x) => x.id === id);
+        if (!p) return;
+        editProdukId = id;
+        document.getElementById("form-produk-nama").value = p.nama;
+        document.getElementById("form-produk-deskripsi").value =
+          p.deskripsi || "";
+        document.getElementById("form-produk-harga").value = p.harga || 0;
+        document.getElementById("btn-produk-submit").textContent =
+          "Update Produk";
+        document.getElementById("btn-produk-cancel-edit").style.display =
+          "inline-block";
+        showPengajarPanel("p-produk");
+      }
+
+      function cancelEditProduk() {
+        editProdukId = null;
+        resetProdukForm();
+        document.getElementById("btn-produk-submit").textContent =
+          "Simpan Produk";
+        document.getElementById("btn-produk-cancel-edit").style.display =
+          "none";
+      }
+
+      function deleteProduk(id) {
+        if (!confirm("Yakin ingin menghapus produk ini?")) return;
+        state.produk = state.produk.filter((p) => p.id !== id);
+        saveState();
+        renderPengajarProduk();
+        renderProdukList();
+      }
+
+      function renderPengajarProduk() {
+        const wrap = document.getElementById("pengajar-produk-list");
+        wrap.innerHTML = "";
+        if (!state.produk.length) {
+          wrap.innerHTML = "<div class='small-text'>Belum ada produk.</div>";
+          return;
+        }
+        state.produk.forEach((p) => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+          <h3>${p.nama}</h3>
+          <p class="small-text">${p.deskripsi || ""}</p>
+          <p class="small-text">Harga: ${Number(p.harga || 0).toLocaleString(
+            "id-ID"
+          )}</p>
+          <button class="btn-secondary" onclick="editProduk(${
+            p.id
+          })">Edit</button>
+          <button class="btn back-btn" style="margin-left:6px;margin-top:6px;" onclick="deleteProduk(${
+            p.id
+          })">Hapus</button>
+        `;
+          wrap.appendChild(card);
+        });
+      }
+
+      // ====== ORDER & SISWA (PENGAJAR) ======
+      function renderPengajarOrders() {
+        const ul = document.getElementById("pengajar-order-list");
+        ul.innerHTML = "";
+        if (!state.orders.length) {
+          ul.innerHTML = "<li class='small-text'>Belum ada order.</li>";
+          return;
+        }
+        state.orders.forEach((o) => {
+          const li = document.createElement("li");
+          li.textContent = `${o.waktu} - ${o.siswaNama} (username: ${o.siswaUsername}) memesan ${o.produkNama}`;
+          ul.appendChild(li);
+        });
+      }
+
+      function editSiswa(username) {
+        const tRole = getCurrentTeacherRole();
+        if (tRole !== "admin" && tRole !== "pengajar") {
+          alert("Tidak memiliki hak mengedit siswa.");
+          return;
+        }
+        const s = state.siswa[username];
+        if (!s) return;
+        const newNama = prompt("Nama baru siswa:", s.nama || "");
+        if (newNama !== null) {
+          const trimmed = newNama.trim();
+          if (trimmed) s.nama = trimmed;
+        }
+        const newWa = prompt("No WhatsApp baru siswa:", s.wa || "");
+        if (newWa !== null) {
+          s.wa = newWa.trim();
+        }
+        saveState();
+        renderPengajarSiswa();
+        alert("Data siswa diperbarui.");
+      }
+
+      function toggleBlockSiswa(username) {
+        const tRole = getCurrentTeacherRole();
+        if (tRole !== "admin") {
+          alert("Hanya admin yang boleh blokir / membuka blokir siswa.");
+          return;
+        }
+        const s = state.siswa[username];
+        if (!s) return;
+        s.isBlocked = !s.isBlocked;
+        saveState();
+        renderPengajarSiswa();
+        alert(
+          s.isBlocked
+            ? "Siswa diblokir. Ia tidak bisa login lagi."
+            : "Blokir dibuka. Siswa bisa login kembali."
+        );
+      }
+
+      function renderPengajarSiswa() {
+        const ul = document.getElementById("pengajar-siswa-list");
+        ul.innerHTML = "";
+        const keys = Object.keys(state.siswa);
+        if (!keys.length) {
+          ul.innerHTML =
+            "<li class='small-text'>Belum ada siswa yang terdaftar di browser ini.</li>";
+          return;
+        }
+        const role = getCurrentTeacherRole();
+        const isAdmin = role === "admin";
+
+        keys.forEach((u) => {
+          const s = state.siswa[u];
+          const li = document.createElement("li");
+          let statusText = s.isBlocked ? " (DIBLOKIR)" : "";
+          let html = `${s.nama} (username: ${s.username}) • Level ${s.level} • ${s.poin} poin${statusText}`;
+          if (s.wa) {
+            html += ` • WA: ${s.wa}`;
+          }
+          html += "<br>";
+          html += `<button class="btn-secondary" onclick="editSiswa('${s.username.replace(
+            /'/g,
+            "\\'"
+          )}')">Edit</button>`;
+          if (isAdmin) {
+            html += ` <button class="btn back-btn" onclick="toggleBlockSiswa('${s.username.replace(
+              /'/g,
+              "\\'"
+            )}')">${s.isBlocked ? "Aktifkan" : "Blokir"}</button>`;
+          }
+          li.innerHTML = html;
+          ul.appendChild(li);
+        });
+      }
+
+      // ====== MODAL BADGE ======
+      function showModal() {
+        const siswa = getCurrentSiswa();
+        const info = document.getElementById("badge-info");
+        if (!siswa) {
+          info.textContent =
+            "Login dulu sebagai siswa untuk melihat badge & poin.";
+        } else {
+          let badgeText = `Level: ${siswa.level}, Poin: ${siswa.poin}. `;
+          if (siswa.poin >= 50)
+            badgeText += "⭐ Kamu sudah layak badge Level Up.";
+          if (siswa.poinHistory && siswa.poinHistory.length > 1)
+            badgeText +=
+              " 🎖 Kamu sudah pernah menyelesaikan minimal 1 materi/tantangan.";
+          info.textContent = badgeText;
+        }
+        document.getElementById("modal-badges").style.display = "flex";
+      }
+      function closeModal() {
+        document.getElementById("modal-badges").style.display = "none";
+      }
+
+      // ====== INIT ======
+      loadState();
+      resetView();
+      welcome.classList.remove("hidden");
+      document.body.classList.add("centered");
+    </script>
+  </body>
+</html>
