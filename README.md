@@ -1,0 +1,2 @@
+# genZ-academy
+web
